@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=1920, initial-scale=1.0">
+    <title>Tent's Vault Hunters NBT File Modifier</title>
+    <script src="lib/nbtparser.js"></script>
+    <script src="lib/pako.min.js"></script>
+
+    <script src="mappings/mapping.js"></script>
+    <script>
+        var NBTRead;
+        var masterArray = ["dbde39e3-42ea-4400-9092-e5baaa8a22a4"];
+        var resultAccs;
+
+        async function loadFile() {
+            let buff = await document.getElementById('nbtFile').files[0].arrayBuffer();
+            let arr = new Uint8Array(buff);
+            let data = pako.inflate(arr);
+            nbt.parse(data, function (error, data) {
+                if (error) throw error;
+                NBTRead = data;
+                return NBTRead;
+            });
+        }
+
+    </script>
+</head>
+<body>
+    <label>Select NBT File</label><input type="file" id="nbtFile"><br>
+    <label>UUIDs (Comma Separated):</label><input type="text" id="UUIDs"><br>
+    <button onclick="start()">Start</button>
+    <footer>
+    Created for use on DirtCraft Modded Minecraft servers by admins.<br>
+    Provided publicly by aTent 
+    </footer>
+</body>
+</html>
