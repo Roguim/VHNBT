@@ -12,17 +12,90 @@
     <script src="lib/nbtFileModifier.js"></script>
     <script>
         var NBTRead;
+        var NBTModify;
         var masterArray = ["dbde39e3-42ea-4400-9092-e5baaa8a22a4"];
         var resultAccs;
     </script>
+
+    <style>
+        .treeParent > .children {
+            position: relative;
+            left: 1%;
+            background: rgba(0,0,0,0.02);
+        }
+
+        .list > .entryTitle::after {
+            content: " List";
+        }
+
+        .package > .entryTitle::after {
+            content: " Package";
+        }
+    </style>
 </head>
 <body>
     <label>Select NBT File</label><input type="file" id="nbtFile"><br>
     <label>UUIDs (Comma Separated):</label><input type="text" id="UUIDs"><br>
     <button onclick="start()">Start</button>
+
+    <div id="editor">
+        <div id="buttons">
+            <button id="add">Add</button>
+            <button id="delete">Delete</button>
+            <button id="filter">Select by Filter</button>
+            <button id="save">Export Changes</button>
+        </div>
+
+        <div id="tree">
+            <div class="treeParent root">
+                <input type="checkbox"></input>
+                <button class="expandable expanded">-</button>
+                <span class="entryTitle">the_vault_PlayAltarRecipes.dat</span>
+                <div class="children">
+                    <div class="treeParent package">
+                        <input type="checkbox"></input>
+                        <button class="expandable expanded">-</button>
+                        <span class="entryTitle">data</span>
+                        <div class="children">
+                            <div class="treeParent list">
+                                <input type="checkbox"></input>
+                                <button class="expandable">+</button>
+                                <span class="entryTitle">AltarRecipeEntries</span>
+                                <div class="children">
+                                    <div class="treeParent package">
+                                        <div class="treeParent empty list">
+                                            <input type="checkbox"></input>
+                                            <span class="entryTitle">cachedItems</span>
+                                            <div class="children">
+
+                                            </div>
+                                        </div>
+                                        <div class="treeParent list">
+                                            <input type="checkbox"></input>
+                                            <button class="expandable">+</button>
+                                            <span class="entryTitle">requiredItems</span>
+                                            <div class="children">
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="treeParent package">
+                                <input type="checkbox"></input>
+                                <button class="expandable">+</button>
+                                <span class="entryTitle">data</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     <footer>
-        • v0.0.1 Developed by Tent •<br>
-        Created for use on DirtCraft Modded Minecraft servers.<br>
+        • Editor v0.0.2-prealpha Developed by Tent •<br>
+        • Mapping v0.0.0 Designed by Tent •<br>
+        Created for use on <a href="https://dirtcraft.net">DirtCraft Modded Minecraft</a> servers.<br>
         Provided publicly by aTent 
     </footer>
 </body>
